@@ -27,17 +27,20 @@ def run_game(inputs):
     print("\n")        
     return winner_index
 
+# Program Variables , subject to change
 player_name = ["A","B","C","D","E"]
 player_score = [0,0,0,0,0]
 player_inputs = [0,0,0,0,0]
 
+# Game Rules
+    # each player inputs a number to store in player_inputs
+    # run game until all players except one have -10 score,
+    # each player loses 1 point except the winner 
+    # if a player has -10 score, they are out of the game
 
-# each player inputs a number to store in player_inputs
 
-# run game until all players except one have -10 score,
-# each player loses 1 point except the winner 
-# if a player has -10 score, they are out of the game
-
+############### 
+# Main Program
 while len(player_name) > 1:
     print("\n")
     for i in range(len(player_inputs)):
@@ -53,6 +56,7 @@ while len(player_name) > 1:
             else:
                 player_score[i] -= 1
         
+    ######## not working ########
     # for i in range(len(player_score)):
     #     if i != winner:
     #         player_score[i] -= 1
@@ -66,7 +70,7 @@ while len(player_name) > 1:
     #         player_inputs.pop(i)
     count = 0
     while count < len(player_score):
-        if player_score[count] == -3:
+        if player_score[count] == -5:
             print(player_name[count], "is out of the game")
             player_name.pop(count)
             player_score.pop(count)
@@ -75,6 +79,6 @@ while len(player_name) > 1:
             print(player_name[count], ": ", player_score[count]) 
             count += 1
         
-
+# End of game
 print("\nThe Ultimate Winner is: ", player_name[0])    
     
