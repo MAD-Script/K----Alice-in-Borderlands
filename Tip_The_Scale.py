@@ -1,4 +1,15 @@
      
+#  Description: This program is a game where each player inputs a number from 0 - 100.
+#               The game number is 80% of the average of all the numbers.
+#               The player with the closest number to the game number wins the round.
+#               Each player loses 1 point except the winner.
+#               If a player has -10 points, they are out of the game.
+#               The player with the most points at the end of the game wins.
+#               The game ends when there is only one player left.
+#               The player with the most points at the end of the game wins.
+
+
+# Game Logic
 def run_game(inputs):
     sum = 0
     for i in range(len(inputs)):
@@ -27,20 +38,45 @@ def run_game(inputs):
     print("\n")        
     return winner_index
 
-# Program Variables , subject to change
-player_name = ["A","B","C","D","E"]
-player_score = [0,0,0,0,0]
-player_inputs = [0,0,0,0,0]
-
 # Game Rules
-    # each player inputs a number to store in player_inputs
-    # run game until all players except one have -10 score,
-    # each player loses 1 point except the winner 
-    # if a player has -10 score, they are out of the game
+def game_rules():
+    print("\nGame Rules: \n")
+    print("Each player inputs a number from 0 - 100")
+    print("The game number is 80%% of the average of all the numbers.")
+    print("The player with the closest number to the game number wins the round.")
+    print("Each player loses 1 point except the winner.")
+    print("If a player has -5 points, they are out of the game. ")
+    print("The game ends when there is only one player left.")
 
 
 ############### 
 # Main Program
+
+print("Welcome to Tip The Scale\n")
+numberOfPlayers = int(input("Enter the number of players: "))
+
+player_name = []
+player_score = [0]*numberOfPlayers
+player_inputs = [0]*numberOfPlayers
+
+for i in range(numberOfPlayers):
+    name = input("Enter player " + str(i+1) + " name: ")
+    player_name.append(name)
+
+
+################
+# print the rules of the game 
+game_rules()
+
+
+################
+# Loop of the Game
+
+
+# TODO - limit input to 0 - 100
+#      - limit input to only numbers
+#      - add more variables
+
 while len(player_name) > 1:
     print("\n")
     for i in range(len(player_inputs)):
@@ -79,6 +115,8 @@ while len(player_name) > 1:
             print(player_name[count], ": ", player_score[count]) 
             count += 1
         
+############
 # End of game
+
 print("\nThe Ultimate Winner is: ", player_name[0])    
     
