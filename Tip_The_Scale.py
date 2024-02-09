@@ -128,6 +128,6 @@ while len(player_name) > 1:
 # End of game
 
 print("\nThe Ultimate Winner is: ", player_name[0])   
-name = input("Please Enter your Ticket Number:  ")
-store_winners(name)
+# name = input("Please Enter your Ticket Number:  ")
+# store_winners(name)
     
