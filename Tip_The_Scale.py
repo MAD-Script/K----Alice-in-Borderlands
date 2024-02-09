@@ -10,6 +10,9 @@
 
 
 # Game Logic
+
+from os import system
+
 def run_game(inputs):
     sum = 0
     for i in range(len(inputs)):
@@ -72,15 +75,20 @@ game_rules()
 ################
 # Loop of the Game
 
-
-# TODO - limit input to 0 - 100
-#      - limit input to only numbers
-#      - add more variables
-
 while len(player_name) > 1:
     print("\n")
     for i in range(len(player_inputs)):
-        player_inputs[i] = int(input("Player " + player_name[i] + " enter a number: "))
+        while True:
+            try:
+                player_inputs[i] = int(input("Player " + player_name[i] + " enter a number: "))
+                if 0 <= player_inputs[i] <= 100:
+                    break
+                else:
+                    print("Invalid input. Please enter an integer value between 0 and 100.")
+            except ValueError:
+                print("Invalid input. Please enter an integer value between 0 and 100.")
+                
+        system('cls')
     
     winners = run_game(player_inputs)
     if winners.count(True) == len(player_name):
@@ -104,6 +112,7 @@ while len(player_name) > 1:
     #         player_name.pop(i)
     #         player_score.pop(i)
     #         player_inputs.pop(i)
+    
     count = 0
     while count < len(player_score):
         if player_score[count] == -5:
@@ -118,5 +127,7 @@ while len(player_name) > 1:
 ############
 # End of game
 
-print("\nThe Ultimate Winner is: ", player_name[0])    
+print("\nThe Ultimate Winner is: ", player_name[0])   
+name = input("Please Enter your Ticket Number:  ")
+store_winners(name)
     
