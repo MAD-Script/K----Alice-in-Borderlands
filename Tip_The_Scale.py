@@ -12,7 +12,9 @@
 # Game Logic
 
 from os import system
+import time
 
+system('cls')
 def run_game(inputs):
     sum = 0
     for i in range(len(inputs)):
@@ -55,21 +57,46 @@ def game_rules():
 ############### 
 # Main Program
 
-print("Welcome to Tip The Scale\n")
-numberOfPlayers = int(input("Enter the number of players: "))
-
+while True:
+    try:
+        print("Welcome to Tip The Scale\n") 
+        numberOfPlayers = int(input("Enter the number of players: "))
+        
+        if 4 <= numberOfPlayers <= 10:
+            break   
+        else:
+            print("Please enter no of players between 4 and 10.")
+            time.sleep(1.5)
+            system('cls')    
+    except ValueError:
+        print("Please enter no of players between 4 and 10.")
+        time.sleep(1.5)
+        system('cls')    
+        
 player_name = []
 player_score = [0]*numberOfPlayers
 player_inputs = [0]*numberOfPlayers
 
+print("\n")
+time.sleep(1)
 for i in range(numberOfPlayers):
     name = input("Enter player " + str(i+1) + " name: ")
     player_name.append(name)
+    time.sleep(.5)
+
+time.sleep(1.5)
+system('cls')
 
 
 ################
 # print the rules of the game 
 game_rules()
+
+time.sleep(3)
+# ready to Start Confirmation 
+input("\nAre you ready to start the game? ( Player 1 press Enter to start )")
+time.sleep(1.5)
+system('cls')
 
 
 ################
@@ -80,14 +107,13 @@ while len(player_name) > 1:
     for i in range(len(player_inputs)):
         while True:
             try:
-                player_inputs[i] = int(input("Player " + player_name[i] + " enter a number: "))
+                player_inputs[i] = int(input("\n\n\nPlayer " + player_name[i] + " enter a number: "))
                 if 0 <= player_inputs[i] <= 100:
                     break
                 else:
-                    print("Invalid input. Please enter an integer value between 0 and 100.")
+                    print("Please enter any number between 0 and 100.")
             except ValueError:
-                print("Invalid input. Please enter an integer value between 0 and 100.")
-                
+                print("Please enter any number between 0 and 100.")
         system('cls')
     
     winners = run_game(player_inputs)
@@ -99,6 +125,8 @@ while len(player_name) > 1:
                 print("The winner is: ", player_name[i])
             else:
                 player_score[i] -= 1
+    time.sleep(3)
+    
         
     ######## not working ########
     # for i in range(len(player_score)):
@@ -113,6 +141,7 @@ while len(player_name) > 1:
     #         player_score.pop(i)
     #         player_inputs.pop(i)
     
+    print("\nPlayer Scores")
     count = 0
     while count < len(player_score):
         if player_score[count] == -5:
@@ -123,11 +152,18 @@ while len(player_name) > 1:
         else:
             print(player_name[count], ": ", player_score[count]) 
             count += 1
-        
+    
+    time.sleep(2)
+    input(f'\n\nPlayer {player_name[0]} Press Enter to Continue.')
+    time.sleep(1)
+    system('cls')
+    
 ############
 # End of game
 
-print("\nThe Ultimate Winner is: ", player_name[0])   
+print("\nThe Ultimate Winner is: ") 
+time.sleep(3)
+print(player_name[0])  
 # name = input("Please Enter your Ticket Number:  ")
 # store_winners(name)
     
